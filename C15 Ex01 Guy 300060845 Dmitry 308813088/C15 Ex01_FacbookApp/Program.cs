@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using FacebookWrapper;
 
 namespace C15_Ex01_FacbookApp
 {
@@ -13,9 +14,10 @@ namespace C15_Ex01_FacbookApp
         [STAThread]
         static void Main()
         {
+            FacebookService.s_UseForamttedToStrings = true;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new AppForm());
         }
     }
 }
