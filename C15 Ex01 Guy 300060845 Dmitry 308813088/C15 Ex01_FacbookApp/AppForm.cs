@@ -19,9 +19,31 @@ namespace C15_Ex01_FacebookApp
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 1000;
 
-            string[] Categories = Enum.GetNames(typeof(eCategory));
-            StringModifier.SpaceCamelCased(Categories);
-            comboBoxCategory.Items.AddRange(Categories);
+            //string[] Categories = Enum.GetNames(typeof(eCategory));
+            //StringModifier.SpaceCamelCased(Categories);
+            //comboBoxCategory.Items.AddRange(Categories);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            LoginResult result = FacebookService.Connect("CAAByZBRy53lEBAGGlCt8uIfJrqamZAEVSqzyxGfsnZAZBwltDYsufZATqK8WeGJqYcLiG8v8yUAmc7JSCJRJ296VCPGj3ZCSBrAGmSZBpGM3SxBZCZAFYywVw4uwwX2Lajecsp2SwRNBD9LXZAvYuZBEvwWYEmB0sjhxhhwoDmPQztZAkbHPDxDNt9rMGyfeE1qlyBT12qtczFB3rm4QdAmAHIR2");
+            // These are NOT the complete list of permissions. Other permissions for example:
+            // "user_birthday", "user_education_history", "user_hometown", "user_likes","user_location","user_relationships","user_relationship_details","user_religion_politics", "user_videos", "user_website", "user_work_history", "email","read_insights","rsvp_event","manage_pages"
+            // The documentation regarding facebook login and permissions can be found here: 
+            // v2.4: https://developers.facebook.com/docs/facebook-login/permissions/v2.4
+
+            if (!string.IsNullOrEmpty(result.AccessToken))
+            {
+                m_LoggedInUser = result.LoggedInUser;
+                fetchUserInfo();
+                buttonLogin.Enabled = false;
+                buttonLogout.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show(result.ErrorMessage);
+            }
         }
 
         User m_LoggedInUser;
@@ -126,31 +148,66 @@ namespace C15_Ex01_FacebookApp
 
         private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string selectedCategory = comboBoxCategory.Items[comboBoxCategory.SelectedIndex].ToString();
+
+            textBoxOtherCategory.Enabled = selectedCategory == "Other" ? true : false;
+
             buttonFetchPages.Enabled = true;
         }
 
         private void buttonFetchPages_Click(object sender, EventArgs e)
         {
+            listBoxFriendsPages.Items.Clear();
             fetchMostLikedPages();
         }
 
         private void fetchMostLikedPages()
         {
-            Dictionary<int, Page> likedPages = new Dictionary<int, Page>();
-            //listBoxFriendsPages.DisplayMember = "Name";
+            List<PageLikeFreq> likedPages = new List<PageLikeFreq>();
+
+            string selectedCategory = comboBoxCategory.Items[comboBoxCategory.SelectedIndex].ToString();
+            
+            if (selectedCategory == "Other") 
+            {
+                selectedCategory = textBoxOtherCategory.Text;
+            }
+
             foreach (User friend in m_LoggedInUser.Friends)
             {
                 foreach (Page page in friend.LikedPages)
                 {
-                    listBoxFriendsPages.Items.Add(page);
+                    if (selectedCategory == "All Categories" || page.Category == selectedCategory)
+                    {
+                        PageLikeFreq pageToAdd = new PageLikeFreq(page, 1);
+                        bool pageFound = false;
+
+                        foreach (PageLikeFreq pageLikeFreq in likedPages)
+                        {
+                            if (pageLikeFreq.Equals(pageToAdd))
+                            {
+                                pageFound = true;
+                                pageLikeFreq.LikeCount++;
+                                break;
+                            }
+                        }
+
+                        if (!pageFound)
+                        {
+                            likedPages.Add(pageToAdd);
+                        }
+                    }
                 }
             }
+
+            likedPages.Sort();
+            likedPages.Reverse();
+            listBoxFriendsPages.Items.AddRange(likedPages.ToArray());
         }
 
         private void listBoxFriendsPages_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Page selectedPage = listBoxFriendsPages.Items[listBoxFriendsPages.SelectedIndex] as Page;
-            Process.Start(selectedPage.URL);
+            PageLikeFreq selectedPage = listBoxFriendsPages.Items[listBoxFriendsPages.SelectedIndex] as PageLikeFreq;
+            Process.Start(selectedPage.Page.URL);
         }
     }
 }

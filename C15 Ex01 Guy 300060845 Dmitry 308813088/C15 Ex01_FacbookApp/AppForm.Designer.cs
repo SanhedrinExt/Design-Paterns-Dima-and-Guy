@@ -40,6 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.listBoxFriendsPages = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxOtherCategory = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriend)).BeginInit();
             this.SuspendLayout();
@@ -119,12 +121,22 @@
             // 
             // comboBoxCategory
             // 
-            this.comboBoxCategory.FormattingEnabled = true;
-            this.comboBoxCategory.Location = new System.Drawing.Point(301, 257);
+            this.comboBoxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCategory.Items.AddRange(new object[] {
+            "All Categories",
+            "Book",
+            "Movie",
+            "TV Show",
+            "Song",
+            "Music Video",
+            "Sports Team",
+            "Artist ",
+            "Athlete",
+            "Other"});
+            this.comboBoxCategory.Location = new System.Drawing.Point(70, 467);
             this.comboBoxCategory.Name = "comboBoxCategory";
-            this.comboBoxCategory.Size = new System.Drawing.Size(153, 21);
+            this.comboBoxCategory.Size = new System.Drawing.Size(117, 21);
             this.comboBoxCategory.TabIndex = 52;
-            this.comboBoxCategory.Text = "Category";
             this.comboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategory_SelectedIndexChanged);
             // 
             // buttonFetchPages
@@ -132,9 +144,9 @@
             this.buttonFetchPages.AccessibleName = "";
             this.buttonFetchPages.Cursor = System.Windows.Forms.Cursors.Default;
             this.buttonFetchPages.Enabled = false;
-            this.buttonFetchPages.Location = new System.Drawing.Point(460, 257);
+            this.buttonFetchPages.Location = new System.Drawing.Point(199, 493);
             this.buttonFetchPages.Name = "buttonFetchPages";
-            this.buttonFetchPages.Size = new System.Drawing.Size(107, 30);
+            this.buttonFetchPages.Size = new System.Drawing.Size(84, 21);
             this.buttonFetchPages.TabIndex = 53;
             this.buttonFetchPages.Text = "Fetch Pages";
             this.buttonFetchPages.UseVisualStyleBackColor = true;
@@ -153,7 +165,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label3.ForeColor = System.Drawing.Color.Blue;
-            this.label3.Location = new System.Drawing.Point(298, 231);
+            this.label3.Location = new System.Drawing.Point(8, 435);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(250, 20);
             this.label3.TabIndex = 56;
@@ -161,12 +173,31 @@
             // 
             // listBoxFriendsPages
             // 
+            this.listBoxFriendsPages.DisplayMember = "Name";
             this.listBoxFriendsPages.FormattingEnabled = true;
-            this.listBoxFriendsPages.Location = new System.Drawing.Point(302, 299);
+            this.listBoxFriendsPages.Location = new System.Drawing.Point(18, 525);
             this.listBoxFriendsPages.Name = "listBoxFriendsPages";
-            this.listBoxFriendsPages.Size = new System.Drawing.Size(265, 95);
+            this.listBoxFriendsPages.Size = new System.Drawing.Size(374, 95);
             this.listBoxFriendsPages.TabIndex = 57;
             this.listBoxFriendsPages.SelectedIndexChanged += new System.EventHandler(this.listBoxFriendsPages_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 470);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 58;
+            this.label2.Text = "Category";
+            // 
+            // textBoxOtherCategory
+            // 
+            this.textBoxOtherCategory.Enabled = false;
+            this.textBoxOtherCategory.Location = new System.Drawing.Point(70, 494);
+            this.textBoxOtherCategory.Name = "textBoxOtherCategory";
+            this.textBoxOtherCategory.Size = new System.Drawing.Size(117, 20);
+            this.textBoxOtherCategory.TabIndex = 59;
+            this.textBoxOtherCategory.Text = "\r\n";
             // 
             // AppForm
             // 
@@ -174,6 +205,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 641);
+            this.Controls.Add(this.textBoxOtherCategory);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.listBoxFriendsPages);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -209,6 +242,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox listBoxFriendsPages;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxOtherCategory;
     }
 }
 
