@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using FacebookWrapper;
 
-namespace C15_Ex01_FacbookApp
+namespace C15_Ex01_FacebookApp
 {
     static class Program
     {
