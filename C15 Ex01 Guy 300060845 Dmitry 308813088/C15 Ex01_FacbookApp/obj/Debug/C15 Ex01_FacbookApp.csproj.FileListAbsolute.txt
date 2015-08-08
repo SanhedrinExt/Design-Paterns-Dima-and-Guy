@@ -7,7 +7,6 @@ C:\Users\Guy\Desktop\Design Patterns\Design-Paterns-Dima-and-Guy\C15 Ex01 Guy 30
 C:\Users\Guy\Desktop\Design Patterns\Design-Paterns-Dima-and-Guy\C15 Ex01 Guy 300060845 Dmitry 308813088\C15 Ex01_FacbookApp\obj\Debug\C15 Ex01_FacbookApp.csproj.GenerateResource.Cache
 C:\Users\Guy\Desktop\Design Patterns\Design-Paterns-Dima-and-Guy\C15 Ex01 Guy 300060845 Dmitry 308813088\C15 Ex01_FacbookApp\obj\Debug\C15 Ex01_FacbookApp.exe
 C:\Users\Guy\Desktop\Design Patterns\Design-Paterns-Dima-and-Guy\C15 Ex01 Guy 300060845 Dmitry 308813088\C15 Ex01_FacbookApp\obj\Debug\C15 Ex01_FacbookApp.pdb
-C:\Users\Guy\Desktop\Design Patterns\Design-Paterns-Dima-and-Guy\C15 Ex01 Guy 300060845 Dmitry 308813088\C15 Ex01_FacbookApp\obj\Debug\C15_Ex01_FacbookApp.AppForm.resources
 C:\Users\DK\Desktop\Design Patterns\Design-Paterns-Dima-and-Guy\C15 Ex01 Guy 300060845 Dmitry 308813088\C15 Ex01_FacbookApp\obj\Debug\C15 Ex01_FacbookApp.exe
 C:\Users\DK\Desktop\Design Patterns\Design-Paterns-Dima-and-Guy\C15 Ex01 Guy 300060845 Dmitry 308813088\C15 Ex01_FacbookApp\obj\Debug\C15 Ex01_FacbookApp.pdb
 C:\Users\DK\Desktop\Design Patterns\Design-Paterns-Dima-and-Guy\C15 Ex01 Guy 300060845 Dmitry 308813088\C15 Ex01_FacbookApp\bin\Debug\C15 Ex01_FacbookApp.exe
@@ -18,3 +17,4 @@ C:\Users\DK\Desktop\Design Patterns\Design-Paterns-Dima-and-Guy\C15 Ex01 Guy 300
 C:\Users\DK\Desktop\Design Patterns\Design-Paterns-Dima-and-Guy\C15 Ex01 Guy 300060845 Dmitry 308813088\C15 Ex01_FacbookApp\obj\Debug\C15_Ex01_FacbookApp.Properties.Resources.resources
 C:\Users\DK\Desktop\Design Patterns\Design-Paterns-Dima-and-Guy\C15 Ex01 Guy 300060845 Dmitry 308813088\C15 Ex01_FacbookApp\obj\Debug\C15 Ex01_FacbookApp.csproj.GenerateResource.Cache
 C:\Users\DK\Desktop\Design Patterns\Design-Paterns-Dima-and-Guy\C15 Ex01 Guy 300060845 Dmitry 308813088\C15 Ex01_FacbookApp\obj\Debug\C15_Ex01_FacebookApp.AppForm.resources
+C:\Users\Guy\Desktop\Design Patterns\Design-Paterns-Dima-and-Guy\C15 Ex01 Guy 300060845 Dmitry 308813088\C15 Ex01_FacbookApp\obj\Debug\C15_Ex01_FacebookApp.AppForm.resources
