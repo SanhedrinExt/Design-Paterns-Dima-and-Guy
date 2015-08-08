@@ -109,9 +109,15 @@ namespace C15_Ex01_FacebookApp
         private void fetchUserInfo()
         {
             pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
-            if (m_LoggedInUser.Statuses.Count > 0)
+            if (m_LoggedInUser.WallPosts.Count > 0)
             {
-                textBoxStatus.Text = m_LoggedInUser.Statuses[0].Message;
+                foreach (Post post in m_LoggedInUser.WallPosts)
+                {
+                    if (post.Message != null)
+                    {
+                        listBoxPosts.Items.Add(post.Message);
+                    }
+                }
             }
         }
 

@@ -52,6 +52,9 @@
             this.labelMalePercentage = new System.Windows.Forms.Label();
             this.labelUnknownGenderPercentage = new System.Windows.Forms.Label();
             this.labelFemalePercentage = new System.Windows.Forms.Label();
+            this.listBoxPosts = new System.Windows.Forms.ListBox();
+            this.labelWall = new System.Windows.Forms.Label();
+            this.buttonPost = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriend)).BeginInit();
             this.SuspendLayout();
@@ -59,9 +62,10 @@
             // buttonLogin
             // 
             this.buttonLogin.AccessibleName = "";
-            this.buttonLogin.Location = new System.Drawing.Point(187, 12);
+            this.buttonLogin.Location = new System.Drawing.Point(249, 15);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(107, 30);
+            this.buttonLogin.Size = new System.Drawing.Size(143, 37);
             this.buttonLogin.TabIndex = 0;
             this.buttonLogin.Text = "login";
             this.buttonLogin.UseVisualStyleBackColor = true;
@@ -71,28 +75,31 @@
             // 
             this.pictureBoxProfile.AccessibleName = "Profile Picture";
             this.pictureBoxProfile.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBoxProfile.Location = new System.Drawing.Point(12, 12);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(16, 15);
+            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
             this.pictureBoxProfile.Size = new System.Drawing.Size(149, 163);
-            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBoxProfile.TabIndex = 1;
             this.pictureBoxProfile.TabStop = false;
             // 
             // textBoxStatus
             // 
-            this.textBoxStatus.Location = new System.Drawing.Point(187, 56);
+            this.textBoxStatus.Location = new System.Drawing.Point(515, 15);
+            this.textBoxStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxStatus.Multiline = true;
             this.textBoxStatus.Name = "textBoxStatus";
-            this.textBoxStatus.Size = new System.Drawing.Size(331, 119);
+            this.textBoxStatus.Size = new System.Drawing.Size(528, 131);
             this.textBoxStatus.TabIndex = 2;
             // 
             // linkFriends
             // 
             this.linkFriends.AutoSize = true;
             this.linkFriends.LinkArea = new System.Windows.Forms.LinkArea(0, 13);
-            this.linkFriends.Location = new System.Drawing.Point(12, 198);
+            this.linkFriends.Location = new System.Drawing.Point(16, 198);
+            this.linkFriends.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkFriends.Name = "linkFriends";
-            this.linkFriends.Size = new System.Drawing.Size(185, 30);
+            this.linkFriends.Size = new System.Drawing.Size(218, 35);
             this.linkFriends.TabIndex = 50;
             this.linkFriends.TabStop = true;
             this.linkFriends.Text = "Fetch Friends \r\n(Click on a friend to view it\'s picture)";
@@ -101,9 +108,10 @@
             // 
             // pictureBoxFriend
             // 
-            this.pictureBoxFriend.Location = new System.Drawing.Point(127, 231);
+            this.pictureBoxFriend.Location = new System.Drawing.Point(169, 238);
+            this.pictureBoxFriend.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxFriend.Name = "pictureBoxFriend";
-            this.pictureBoxFriend.Size = new System.Drawing.Size(137, 173);
+            this.pictureBoxFriend.Size = new System.Drawing.Size(183, 213);
             this.pictureBoxFriend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxFriend.TabIndex = 49;
             this.pictureBoxFriend.TabStop = false;
@@ -111,9 +119,11 @@
             // listBoxFriends
             // 
             this.listBoxFriends.FormattingEnabled = true;
-            this.listBoxFriends.Location = new System.Drawing.Point(12, 231);
+            this.listBoxFriends.ItemHeight = 16;
+            this.listBoxFriends.Location = new System.Drawing.Point(16, 238);
+            this.listBoxFriends.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBoxFriends.Name = "listBoxFriends";
-            this.listBoxFriends.Size = new System.Drawing.Size(109, 173);
+            this.listBoxFriends.Size = new System.Drawing.Size(144, 212);
             this.listBoxFriends.TabIndex = 48;
             this.listBoxFriends.SelectedIndexChanged += new System.EventHandler(this.listBoxFriends_SelectedIndexChanged);
             // 
@@ -121,9 +131,10 @@
             // 
             this.buttonLogout.AccessibleName = "";
             this.buttonLogout.Enabled = false;
-            this.buttonLogout.Location = new System.Drawing.Point(310, 12);
+            this.buttonLogout.Location = new System.Drawing.Point(249, 59);
+            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(107, 30);
+            this.buttonLogout.Size = new System.Drawing.Size(143, 37);
             this.buttonLogout.TabIndex = 51;
             this.buttonLogout.Text = "logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
@@ -144,9 +155,10 @@
             "Artist ",
             "Athlete",
             "Other"});
-            this.comboBoxCategory.Location = new System.Drawing.Point(70, 467);
+            this.comboBoxCategory.Location = new System.Drawing.Point(98, 500);
+            this.comboBoxCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCategory.Name = "comboBoxCategory";
-            this.comboBoxCategory.Size = new System.Drawing.Size(117, 21);
+            this.comboBoxCategory.Size = new System.Drawing.Size(155, 24);
             this.comboBoxCategory.TabIndex = 52;
             this.comboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategory_SelectedIndexChanged);
             // 
@@ -155,9 +167,10 @@
             this.buttonFetchPages.AccessibleName = "";
             this.buttonFetchPages.Cursor = System.Windows.Forms.Cursors.Default;
             this.buttonFetchPages.Enabled = false;
-            this.buttonFetchPages.Location = new System.Drawing.Point(199, 493);
+            this.buttonFetchPages.Location = new System.Drawing.Point(261, 533);
+            this.buttonFetchPages.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonFetchPages.Name = "buttonFetchPages";
-            this.buttonFetchPages.Size = new System.Drawing.Size(84, 21);
+            this.buttonFetchPages.Size = new System.Drawing.Size(112, 26);
             this.buttonFetchPages.TabIndex = 53;
             this.buttonFetchPages.Text = "Fetch Pages";
             this.buttonFetchPages.UseVisualStyleBackColor = true;
@@ -168,7 +181,8 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label3.ForeColor = System.Drawing.Color.Blue;
-            this.label3.Location = new System.Drawing.Point(8, 435);
+            this.label3.Location = new System.Drawing.Point(13, 469);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(250, 20);
             this.label3.TabIndex = 56;
@@ -178,27 +192,31 @@
             // 
             this.listBoxFriendsPages.DisplayMember = "Name";
             this.listBoxFriendsPages.FormattingEnabled = true;
-            this.listBoxFriendsPages.Location = new System.Drawing.Point(18, 520);
+            this.listBoxFriendsPages.ItemHeight = 16;
+            this.listBoxFriendsPages.Location = new System.Drawing.Point(16, 563);
+            this.listBoxFriendsPages.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBoxFriendsPages.Name = "listBoxFriendsPages";
-            this.listBoxFriendsPages.Size = new System.Drawing.Size(342, 95);
+            this.listBoxFriendsPages.Size = new System.Drawing.Size(455, 116);
             this.listBoxFriendsPages.TabIndex = 57;
             this.listBoxFriendsPages.SelectedIndexChanged += new System.EventHandler(this.listBoxFriendsPages_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 470);
+            this.label2.Location = new System.Drawing.Point(25, 503);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.Size = new System.Drawing.Size(63, 16);
             this.label2.TabIndex = 58;
             this.label2.Text = "Category";
             // 
             // textBoxOtherCategory
             // 
             this.textBoxOtherCategory.Enabled = false;
-            this.textBoxOtherCategory.Location = new System.Drawing.Point(70, 494);
+            this.textBoxOtherCategory.Location = new System.Drawing.Point(98, 533);
+            this.textBoxOtherCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxOtherCategory.Name = "textBoxOtherCategory";
-            this.textBoxOtherCategory.Size = new System.Drawing.Size(117, 20);
+            this.textBoxOtherCategory.Size = new System.Drawing.Size(155, 22);
             this.textBoxOtherCategory.TabIndex = 59;
             // 
             // label4
@@ -206,7 +224,8 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label4.ForeColor = System.Drawing.Color.Blue;
-            this.label4.Location = new System.Drawing.Point(391, 382);
+            this.label4.Location = new System.Drawing.Point(514, 404);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(247, 40);
             this.label4.TabIndex = 60;
@@ -215,9 +234,10 @@
             // buttonCalculateFriendsStatstics
             // 
             this.buttonCalculateFriendsStatstics.Enabled = false;
-            this.buttonCalculateFriendsStatstics.Location = new System.Drawing.Point(665, 381);
+            this.buttonCalculateFriendsStatstics.Location = new System.Drawing.Point(771, 404);
+            this.buttonCalculateFriendsStatstics.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonCalculateFriendsStatstics.Name = "buttonCalculateFriendsStatstics";
-            this.buttonCalculateFriendsStatstics.Size = new System.Drawing.Size(75, 23);
+            this.buttonCalculateFriendsStatstics.Size = new System.Drawing.Size(100, 28);
             this.buttonCalculateFriendsStatstics.TabIndex = 0;
             this.buttonCalculateFriendsStatstics.Text = "Start";
             this.buttonCalculateFriendsStatstics.UseVisualStyleBackColor = true;
@@ -227,7 +247,8 @@
             // 
             this.labelMale.AutoSize = true;
             this.labelMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelMale.Location = new System.Drawing.Point(393, 422);
+            this.labelMale.Location = new System.Drawing.Point(515, 444);
+            this.labelMale.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMale.Name = "labelMale";
             this.labelMale.Size = new System.Drawing.Size(46, 17);
             this.labelMale.TabIndex = 61;
@@ -237,7 +258,8 @@
             // 
             this.labelFemale.AutoSize = true;
             this.labelFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelFemale.Location = new System.Drawing.Point(526, 422);
+            this.labelFemale.Location = new System.Drawing.Point(692, 444);
+            this.labelFemale.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFemale.Name = "labelFemale";
             this.labelFemale.Size = new System.Drawing.Size(62, 17);
             this.labelFemale.TabIndex = 62;
@@ -247,7 +269,8 @@
             // 
             this.labelUnknownGender.AutoSize = true;
             this.labelUnknownGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelUnknownGender.Location = new System.Drawing.Point(662, 422);
+            this.labelUnknownGender.Location = new System.Drawing.Point(874, 444);
+            this.labelUnknownGender.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelUnknownGender.Name = "labelUnknownGender";
             this.labelUnknownGender.Size = new System.Drawing.Size(74, 17);
             this.labelUnknownGender.TabIndex = 63;
@@ -256,32 +279,39 @@
             // listBoxMaleFriends
             // 
             this.listBoxMaleFriends.FormattingEnabled = true;
-            this.listBoxMaleFriends.Location = new System.Drawing.Point(395, 442);
+            this.listBoxMaleFriends.ItemHeight = 16;
+            this.listBoxMaleFriends.Location = new System.Drawing.Point(518, 469);
+            this.listBoxMaleFriends.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBoxMaleFriends.Name = "listBoxMaleFriends";
-            this.listBoxMaleFriends.Size = new System.Drawing.Size(109, 173);
+            this.listBoxMaleFriends.Size = new System.Drawing.Size(144, 212);
             this.listBoxMaleFriends.TabIndex = 64;
             // 
             // listBoxFemaleFriends
             // 
             this.listBoxFemaleFriends.FormattingEnabled = true;
-            this.listBoxFemaleFriends.Location = new System.Drawing.Point(529, 442);
+            this.listBoxFemaleFriends.ItemHeight = 16;
+            this.listBoxFemaleFriends.Location = new System.Drawing.Point(696, 469);
+            this.listBoxFemaleFriends.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBoxFemaleFriends.Name = "listBoxFemaleFriends";
-            this.listBoxFemaleFriends.Size = new System.Drawing.Size(109, 173);
+            this.listBoxFemaleFriends.Size = new System.Drawing.Size(144, 212);
             this.listBoxFemaleFriends.TabIndex = 65;
             // 
             // listBoxUnkownGender
             // 
             this.listBoxUnkownGender.FormattingEnabled = true;
-            this.listBoxUnkownGender.Location = new System.Drawing.Point(664, 442);
+            this.listBoxUnkownGender.ItemHeight = 16;
+            this.listBoxUnkownGender.Location = new System.Drawing.Point(876, 469);
+            this.listBoxUnkownGender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBoxUnkownGender.Name = "listBoxUnkownGender";
-            this.listBoxUnkownGender.Size = new System.Drawing.Size(109, 173);
+            this.listBoxUnkownGender.Size = new System.Drawing.Size(144, 212);
             this.listBoxUnkownGender.TabIndex = 66;
             // 
             // labelMalePercentage
             // 
             this.labelMalePercentage.AutoSize = true;
             this.labelMalePercentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelMalePercentage.Location = new System.Drawing.Point(436, 422);
+            this.labelMalePercentage.Location = new System.Drawing.Point(572, 444);
+            this.labelMalePercentage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMalePercentage.Name = "labelMalePercentage";
             this.labelMalePercentage.Size = new System.Drawing.Size(0, 17);
             this.labelMalePercentage.TabIndex = 67;
@@ -290,7 +320,8 @@
             // 
             this.labelUnknownGenderPercentage.AutoSize = true;
             this.labelUnknownGenderPercentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelUnknownGenderPercentage.Location = new System.Drawing.Point(731, 422);
+            this.labelUnknownGenderPercentage.Location = new System.Drawing.Point(975, 519);
+            this.labelUnknownGenderPercentage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelUnknownGenderPercentage.Name = "labelUnknownGenderPercentage";
             this.labelUnknownGenderPercentage.Size = new System.Drawing.Size(0, 17);
             this.labelUnknownGenderPercentage.TabIndex = 68;
@@ -299,17 +330,53 @@
             // 
             this.labelFemalePercentage.AutoSize = true;
             this.labelFemalePercentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelFemalePercentage.Location = new System.Drawing.Point(583, 422);
+            this.labelFemalePercentage.Location = new System.Drawing.Point(768, 444);
+            this.labelFemalePercentage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFemalePercentage.Name = "labelFemalePercentage";
             this.labelFemalePercentage.Size = new System.Drawing.Size(0, 17);
             this.labelFemalePercentage.TabIndex = 69;
             // 
+            // listBoxPosts
+            // 
+            this.listBoxPosts.FormattingEnabled = true;
+            this.listBoxPosts.ItemHeight = 16;
+            this.listBoxPosts.Location = new System.Drawing.Point(515, 238);
+            this.listBoxPosts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxPosts.Name = "listBoxPosts";
+            this.listBoxPosts.Size = new System.Drawing.Size(516, 132);
+            this.listBoxPosts.TabIndex = 70;
+            // 
+            // labelWall
+            // 
+            this.labelWall.AutoSize = true;
+            this.labelWall.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelWall.ForeColor = System.Drawing.Color.Blue;
+            this.labelWall.Location = new System.Drawing.Point(517, 209);
+            this.labelWall.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelWall.Name = "labelWall";
+            this.labelWall.Size = new System.Drawing.Size(39, 20);
+            this.labelWall.TabIndex = 71;
+            this.labelWall.Text = "Wall";
+            // 
+            // buttonPost
+            // 
+            this.buttonPost.Location = new System.Drawing.Point(515, 154);
+            this.buttonPost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonPost.Name = "buttonPost";
+            this.buttonPost.Size = new System.Drawing.Size(114, 38);
+            this.buttonPost.TabIndex = 72;
+            this.buttonPost.Text = "Post";
+            this.buttonPost.UseVisualStyleBackColor = true;
+            // 
             // AppForm
             // 
             this.AccessibleName = "Facebook App";
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 641);
+            this.ClientSize = new System.Drawing.Size(1082, 691);
+            this.Controls.Add(this.buttonPost);
+            this.Controls.Add(this.labelWall);
+            this.Controls.Add(this.listBoxPosts);
             this.Controls.Add(this.labelFemalePercentage);
             this.Controls.Add(this.labelUnknownGenderPercentage);
             this.Controls.Add(this.labelMalePercentage);
@@ -334,8 +401,11 @@
             this.Controls.Add(this.textBoxStatus);
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.buttonLogin);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AppForm";
-            this.Text = "Form1";
+            this.Text = "FaceBookApp";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriend)).EndInit();
             this.ResumeLayout(false);
@@ -369,6 +439,9 @@
         private System.Windows.Forms.Label labelMalePercentage;
         private System.Windows.Forms.Label labelUnknownGenderPercentage;
         private System.Windows.Forms.Label labelFemalePercentage;
+        private System.Windows.Forms.ListBox listBoxPosts;
+        private System.Windows.Forms.Label labelWall;
+        private System.Windows.Forms.Button buttonPost;
     }
 }
 
