@@ -13,17 +13,25 @@ namespace C15_Ex01_FacebookApp
         public List<User> MaleFriends { get; private set; }
         public List<User> FemaleFriends { get; private set; }
         public List<User> UnknownGenderFriends { get; private set; }
+        bool m_SortedGenders = false;
 
         public FriendsManager(List<User> i_Friends)
         {
             AllFriends = i_Friends;
+            UnknownGenderFriends = new List<User>();
+            MaleFriends = new List<User>();
+            FemaleFriends = new List<User>();
         }
 
         public void SortFriendsByGender()
         {
-            foreach (User friend in AllFriends)
+            if (!m_SortedGenders)
             {
-                sortFriendByGender(friend);
+                foreach (User friend in AllFriends)
+                {
+                    sortFriendByGender(friend);
+                }
+                m_SortedGenders = true;
             }
         }
 
@@ -35,7 +43,7 @@ namespace C15_Ex01_FacebookApp
                     FemaleFriends.Add(i_friend);
                     break;
                 case User.eGender.male:
-                    FemaleFriends.Add(i_friend);
+                    MaleFriends.Add(i_friend);
                     break;
                 default:
                     UnknownGenderFriends.Add(i_friend);
@@ -53,14 +61,14 @@ namespace C15_Ex01_FacebookApp
             return GenderPercentage(FemaleFriends.Count);
         }
 
-        public float MalePercentage()
+        public float UnknownGenderPercentage()
         {
             return GenderPercentage(UnknownGenderFriends.Count);
         }
 
         private float GenderPercentage(int i_GenderCount)
         {
-            return (i_GenderCount / AllFriends.Count) * 100;
+            return ((float)i_GenderCount / (float)AllFriends.Count) * 100;
         }
     }
 }

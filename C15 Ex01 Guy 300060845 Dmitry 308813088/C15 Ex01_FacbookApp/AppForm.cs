@@ -31,10 +31,7 @@ namespace C15_Ex01_FacebookApp
 
             if (!string.IsNullOrEmpty(result.AccessToken))
             {
-                m_LoggedInUser = result.LoggedInUser;
-                fetchUserInfo();
-                buttonLogin.Enabled = false;
-                buttonLogout.Enabled = true;
+                loginSequence(result);
             }
             else
             {
@@ -43,6 +40,7 @@ namespace C15_Ex01_FacebookApp
         }
 
         User m_LoggedInUser;
+        FriendsManager m_FriendsManager;
 
         private void loginAndInit()
         {
@@ -56,17 +54,24 @@ namespace C15_Ex01_FacebookApp
             
             if (!string.IsNullOrEmpty(result.AccessToken))
             {
-                m_LoggedInUser = result.LoggedInUser;
-                fetchUserInfo();
-                buttonLogin.Enabled = false;
-                buttonLogout.Enabled = true;
-                comboBoxCategory.Enabled = true;
+                loginSequence(result);
             }
             else
             {
                 MessageBox.Show(result.ErrorMessage);
             }
 
+        }
+
+        private void loginSequence(LoginResult i_result)
+        {
+            m_LoggedInUser = i_result.LoggedInUser;
+            fetchUserInfo();
+            m_FriendsManager = new FriendsManager(m_LoggedInUser.Friends.ToList<User>());
+            buttonLogin.Enabled = false;
+            buttonLogout.Enabled = true;
+            buttonCalculateFriendsStatstics.Enabled = true;
+            comboBoxCategory.Enabled = true;
         }
 
         private void logoutSequence()
@@ -78,9 +83,17 @@ namespace C15_Ex01_FacebookApp
             m_LoggedInUser = null;
             buttonLogin.Enabled = true;
             buttonLogout.Enabled = false;
+            buttonFetchPages.Enabled = false;
             comboBoxCategory.Enabled = false;
             listBoxFriendsPages.Items.Clear();
             textBoxOtherCategory.Text = string.Empty;
+            buttonCalculateFriendsStatstics.Enabled = false;
+            listBoxMaleFriends.Items.Clear();
+            listBoxFemaleFriends.Items.Clear();
+            listBoxUnkownGender.Items.Clear();
+            labelMalePercentage.Text = "";
+            labelFemalePercentage.Text = "";
+            labelUnknownGenderPercentage.Text = "";
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -214,12 +227,21 @@ namespace C15_Ex01_FacebookApp
 
         private void buttonCalculateFriendsStatstics_Click(object sender, EventArgs e)
         {
-            generateFriendsStatistics();
-        }
+            m_FriendsManager.SortFriendsByGender();
 
-        private void generateFriendsStatistics()
-        {
-            
+            labelMalePercentage.Text = "";
+            labelFemalePercentage.Text = "";
+            labelUnknownGenderPercentage.Text = "";
+            labelMalePercentage.Text = String.Format("{0}%", m_FriendsManager.MalePercentage().ToString("0.0"));
+            labelFemalePercentage.Text = String.Format("{0}%", m_FriendsManager.FemalePercentage().ToString("0.0"));
+            labelUnknownGenderPercentage.Text = String.Format("{0}%", m_FriendsManager.UnknownGenderPercentage().ToString("0.0"));
+        
+            listBoxMaleFriends.Items.Clear();
+            listBoxFemaleFriends.Items.Clear();
+            listBoxUnkownGender.Items.Clear();
+            listBoxMaleFriends.Items.AddRange(m_FriendsManager.MaleFriends.ToArray());
+            listBoxFemaleFriends.Items.AddRange(m_FriendsManager.FemaleFriends.ToArray());
+            listBoxUnkownGender.Items.AddRange(m_FriendsManager.UnknownGenderFriends.ToArray());
         }
     }
 }
