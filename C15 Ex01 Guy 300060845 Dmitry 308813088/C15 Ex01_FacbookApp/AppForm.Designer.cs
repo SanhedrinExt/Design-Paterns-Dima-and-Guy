@@ -197,7 +197,6 @@
             this.textBoxOtherCategory.Name = "textBoxOtherCategory";
             this.textBoxOtherCategory.Size = new System.Drawing.Size(117, 20);
             this.textBoxOtherCategory.TabIndex = 59;
-            this.textBoxOtherCategory.Text = "\r\n";
             // 
             // AppForm
             // 
