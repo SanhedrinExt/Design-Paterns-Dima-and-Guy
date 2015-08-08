@@ -57,6 +57,7 @@
       <DependentUpon>AppForm.cs</DependentUpon>
     </Compile>
     <Compile Include="eCategory.cs" />
+    <Compile Include="FriendsManager.cs" />
     <Compile Include="PageLikeFreq.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

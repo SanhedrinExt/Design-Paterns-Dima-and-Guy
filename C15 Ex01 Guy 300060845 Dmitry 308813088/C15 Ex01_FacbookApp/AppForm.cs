@@ -18,10 +18,6 @@ namespace C15_Ex01_FacebookApp
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 1000;
-
-            //string[] Categories = Enum.GetNames(typeof(eCategory));
-            //StringModifier.SpaceCamelCased(Categories);
-            //comboBoxCategory.Items.AddRange(Categories);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -64,6 +60,7 @@ namespace C15_Ex01_FacebookApp
                 fetchUserInfo();
                 buttonLogin.Enabled = false;
                 buttonLogout.Enabled = true;
+                comboBoxCategory.Enabled = true;
             }
             else
             {
@@ -81,6 +78,9 @@ namespace C15_Ex01_FacebookApp
             m_LoggedInUser = null;
             buttonLogin.Enabled = true;
             buttonLogout.Enabled = false;
+            comboBoxCategory.Enabled = false;
+            listBoxFriendsPages.Items.Clear();
+            textBoxOtherCategory.Text = string.Empty;
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -98,8 +98,7 @@ namespace C15_Ex01_FacebookApp
             pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
             if (m_LoggedInUser.Statuses.Count > 0)
             {
-                //textBoxStatus.Text = m_LoggedInUser.Statuses[0].Message;
-                textBoxStatus.Text = string.Format("{0} {1}", m_LoggedInUser.LikedPages[0].Name, m_LoggedInUser.LikedPages[0].Category);
+                textBoxStatus.Text = m_LoggedInUser.Statuses[0].Message;
             }
         }
 
@@ -211,6 +210,16 @@ namespace C15_Ex01_FacebookApp
         {
             PageLikeFreq selectedPage = listBoxFriendsPages.Items[listBoxFriendsPages.SelectedIndex] as PageLikeFreq;
             Process.Start(selectedPage.Page.URL);
+        }
+
+        private void buttonCalculateFriendsStatstics_Click(object sender, EventArgs e)
+        {
+            generateFriendsStatistics();
+        }
+
+        private void generateFriendsStatistics()
+        {
+            
         }
     }
 }

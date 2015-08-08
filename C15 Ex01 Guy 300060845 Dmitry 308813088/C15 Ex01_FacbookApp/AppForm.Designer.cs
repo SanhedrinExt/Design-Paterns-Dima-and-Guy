@@ -42,6 +42,8 @@
             this.listBoxFriendsPages = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxOtherCategory = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.buttonCalculateFriendsStatstics = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriend)).BeginInit();
             this.SuspendLayout();
@@ -122,6 +124,7 @@
             // comboBoxCategory
             // 
             this.comboBoxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCategory.Enabled = false;
             this.comboBoxCategory.Items.AddRange(new object[] {
             "All Categories",
             "Book",
@@ -175,7 +178,7 @@
             // 
             this.listBoxFriendsPages.DisplayMember = "Name";
             this.listBoxFriendsPages.FormattingEnabled = true;
-            this.listBoxFriendsPages.Location = new System.Drawing.Point(18, 525);
+            this.listBoxFriendsPages.Location = new System.Drawing.Point(18, 520);
             this.listBoxFriendsPages.Name = "listBoxFriendsPages";
             this.listBoxFriendsPages.Size = new System.Drawing.Size(374, 95);
             this.listBoxFriendsPages.TabIndex = 57;
@@ -198,12 +201,35 @@
             this.textBoxOtherCategory.Size = new System.Drawing.Size(117, 20);
             this.textBoxOtherCategory.TabIndex = 59;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label4.ForeColor = System.Drawing.Color.Blue;
+            this.label4.Location = new System.Drawing.Point(428, 364);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(247, 40);
+            this.label4.TabIndex = 60;
+            this.label4.Text = "Display friends gender distribution\r\n\r\n";
+            // 
+            // buttonCalculateFriendsStatstics
+            // 
+            this.buttonCalculateFriendsStatstics.Location = new System.Drawing.Point(681, 364);
+            this.buttonCalculateFriendsStatstics.Name = "buttonCalculateFriendsStatstics";
+            this.buttonCalculateFriendsStatstics.Size = new System.Drawing.Size(75, 23);
+            this.buttonCalculateFriendsStatstics.TabIndex = 0;
+            this.buttonCalculateFriendsStatstics.Text = "Start";
+            this.buttonCalculateFriendsStatstics.UseVisualStyleBackColor = true;
+            this.buttonCalculateFriendsStatstics.Click += new System.EventHandler(this.buttonCalculateFriendsStatstics_Click);
+            // 
             // AppForm
             // 
             this.AccessibleName = "Facebook App";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 641);
+            this.Controls.Add(this.buttonCalculateFriendsStatstics);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxOtherCategory);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBoxFriendsPages);
@@ -243,6 +269,8 @@
         private System.Windows.Forms.ListBox listBoxFriendsPages;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxOtherCategory;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button buttonCalculateFriendsStatstics;
     }
 }
 
