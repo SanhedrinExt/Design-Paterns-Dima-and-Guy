@@ -164,7 +164,6 @@ namespace C15_Ex01_FacebookApp
         private void fetchMostLikedPages()
         {
             List<PageLikeFreq> likedPages = new List<PageLikeFreq>();
-
             string selectedCategory = comboBoxCategory.Items[comboBoxCategory.SelectedIndex].ToString();
             
             if (selectedCategory == "Other") 
@@ -172,16 +171,24 @@ namespace C15_Ex01_FacebookApp
                 selectedCategory = textBoxOtherCategory.Text;
             }
 
+            generatePagesLikedByFriendsList(selectedCategory, likedPages);
+            likedPages.Sort();
+            likedPages.Reverse();
+            listBoxFriendsPages.Items.AddRange(likedPages.ToArray());
+        }
+
+        private void generatePagesLikedByFriendsList(string i_Category, List<PageLikeFreq> o_LikedPages)
+        {
             foreach (User friend in m_LoggedInUser.Friends)
             {
                 foreach (Page page in friend.LikedPages)
                 {
-                    if (selectedCategory == "All Categories" || page.Category == selectedCategory)
+                    if (i_Category == "All Categories" || page.Category == i_Category)
                     {
                         PageLikeFreq pageToAdd = new PageLikeFreq(page, 1);
                         bool pageFound = false;
 
-                        foreach (PageLikeFreq pageLikeFreq in likedPages)
+                        foreach (PageLikeFreq pageLikeFreq in o_LikedPages)
                         {
                             if (pageLikeFreq.Equals(pageToAdd))
                             {
@@ -193,15 +200,11 @@ namespace C15_Ex01_FacebookApp
 
                         if (!pageFound)
                         {
-                            likedPages.Add(pageToAdd);
+                            o_LikedPages.Add(pageToAdd);
                         }
                     }
                 }
             }
-
-            likedPages.Sort();
-            likedPages.Reverse();
-            listBoxFriendsPages.Items.AddRange(likedPages.ToArray());
         }
 
         private void listBoxFriendsPages_SelectedIndexChanged(object sender, EventArgs e)
