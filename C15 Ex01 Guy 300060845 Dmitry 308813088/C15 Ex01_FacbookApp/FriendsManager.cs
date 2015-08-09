@@ -13,7 +13,7 @@ namespace C15_Ex01_FacebookApp
         public List<User> MaleFriends { get; private set; }
         public List<User> FemaleFriends { get; private set; }
         public List<User> UnknownGenderFriends { get; private set; }
-        bool m_SortedGenders = false;
+        private bool m_SortedGenders = false;
 
         public FriendsManager(List<User> i_Friends)
         {

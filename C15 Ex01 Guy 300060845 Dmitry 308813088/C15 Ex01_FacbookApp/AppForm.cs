@@ -195,36 +195,6 @@ namespace C15_Ex01_FacebookApp
             listBoxFriendsPages.Items.AddRange(likedPages.ToArray());
         }
 
-        private void generatePagesLikedByFriendsList(string i_Category, List<PageLikeFreq> o_LikedPages)
-        {
-            foreach (User friend in m_LoggedInUser.Friends)
-            {
-                foreach (Page page in friend.LikedPages)
-                {
-                    if (i_Category == "All Categories" || page.Category == i_Category)
-                    {
-                        PageLikeFreq pageToAdd = new PageLikeFreq(page, 1);
-                        bool pageFound = false;
-
-                        foreach (PageLikeFreq pageLikeFreq in o_LikedPages)
-                        {
-                            if (pageLikeFreq.Equals(pageToAdd))
-                            {
-                                pageFound = true;
-                                pageLikeFreq.LikeCount++;
-                                break;
-                            }
-                        }
-
-                        if (!pageFound)
-                        {
-                            o_LikedPages.Add(pageToAdd);
-                        }
-                    }
-                }
-            }
-        }
-
         private void listBoxFriendsPages_SelectedIndexChanged(object sender, EventArgs e)
         {
             PageLikeFreq selectedPage = listBoxFriendsPages.Items[listBoxFriendsPages.SelectedIndex] as PageLikeFreq;
