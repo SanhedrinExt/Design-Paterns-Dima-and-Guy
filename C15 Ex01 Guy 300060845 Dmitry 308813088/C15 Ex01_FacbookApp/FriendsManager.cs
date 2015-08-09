@@ -70,5 +70,36 @@ namespace C15_Ex01_FacebookApp
         {
             return ((float)i_GenderCount / (float)AllFriends.Count) * 100;
         }
+
+        public void GeneratePagesLikedByFriendsList(string i_Category, List<PageLikeFreq> io_LikedPages)
+        {
+            foreach (User friend in AllFriends)
+            {
+                foreach (Page page in friend.LikedPages)
+                {
+                    if (i_Category == "All Categories" || page.Category == i_Category)
+                    {
+                        PageLikeFreq pageToAdd = new PageLikeFreq(page, 1);
+                        bool pageFound = false;
+
+                        foreach (PageLikeFreq pageLikeFreq in io_LikedPages)
+                        {
+                            if (pageLikeFreq.Equals(pageToAdd))
+                            {
+                                pageFound = true;
+                                pageLikeFreq.LikeCount++;
+                                break;
+                            }
+                        }
+
+                        if (!pageFound)
+                        {
+                            io_LikedPages.Add(pageToAdd);
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

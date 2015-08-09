@@ -189,7 +189,7 @@ namespace C15_Ex01_FacebookApp
                 selectedCategory = textBoxOtherCategory.Text;
             }
 
-            generatePagesLikedByFriendsList(selectedCategory, likedPages);
+            m_FriendsManager.GeneratePagesLikedByFriendsList(selectedCategory, likedPages);
             likedPages.Sort();
             likedPages.Reverse();
             listBoxFriendsPages.Items.AddRange(likedPages.ToArray());
