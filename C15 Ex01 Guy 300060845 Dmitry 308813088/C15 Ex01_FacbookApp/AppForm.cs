@@ -76,21 +76,22 @@ namespace C15_Ex01_FacebookApp
 
         private void logoutSequence()
         {
-            pictureBoxProfile.Image = null;
-            textBoxStatus.Text = String.Empty;
-            listBoxFriends.Items.Clear();
-            pictureBoxFriend.Image = null;
             m_LoggedInUser = null;
-            buttonLogin.Enabled = true;
-            buttonLogout.Enabled = false;
-            buttonFetchPages.Enabled = false;
-            comboBoxCategory.Enabled = false;
+            pictureBoxProfile.Image = null;
+            pictureBoxFriend.Image = null;
+            textBoxStatus.Text = String.Empty;
+            textBoxOtherCategory.Text = string.Empty;            
+            listBoxFriends.Items.Clear();
+            listBoxPosts.Items.Clear();
             listBoxFriendsPages.Items.Clear();
-            textBoxOtherCategory.Text = string.Empty;
-            buttonCalculateFriendsStatstics.Enabled = false;
             listBoxMaleFriends.Items.Clear();
             listBoxFemaleFriends.Items.Clear();
             listBoxUnkownGender.Items.Clear();
+            buttonLogin.Enabled = true;
+            buttonLogout.Enabled = false;
+            buttonFetchPages.Enabled = false;
+            buttonCalculateFriendsStatstics.Enabled = false;
+            comboBoxCategory.Enabled = false;
             labelMalePercentage.Text = "";
             labelFemalePercentage.Text = "";
             labelUnknownGenderPercentage.Text = "";
@@ -203,6 +204,11 @@ namespace C15_Ex01_FacebookApp
 
         private void buttonCalculateFriendsStatstics_Click(object sender, EventArgs e)
         {
+            calculateFriendsStatistics();
+        }
+
+        private void calculateFriendsStatistics()
+        {
             m_FriendsManager.SortFriendsByGender();
 
             labelMalePercentage.Text = "";
@@ -211,7 +217,7 @@ namespace C15_Ex01_FacebookApp
             labelMalePercentage.Text = String.Format("{0}%", m_FriendsManager.MalePercentage().ToString("0.0"));
             labelFemalePercentage.Text = String.Format("{0}%", m_FriendsManager.FemalePercentage().ToString("0.0"));
             labelUnknownGenderPercentage.Text = String.Format("{0}%", m_FriendsManager.UnknownGenderPercentage().ToString("0.0"));
-        
+
             listBoxMaleFriends.Items.Clear();
             listBoxFemaleFriends.Items.Clear();
             listBoxUnkownGender.Items.Clear();

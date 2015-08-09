@@ -71,7 +71,7 @@ namespace C15_Ex01_FacebookApp
             return ((float)i_GenderCount / (float)AllFriends.Count) * 100;
         }
 
-        public void GeneratePagesLikedByFriendsList(string i_Category, List<PageLikeFreq> io_LikedPages)
+        public void GeneratePagesLikedByFriendsList(string i_Category, List<PageLikeFreq> o_LikedPages)
         {
             foreach (User friend in AllFriends)
             {
@@ -82,7 +82,7 @@ namespace C15_Ex01_FacebookApp
                         PageLikeFreq pageToAdd = new PageLikeFreq(page, 1);
                         bool pageFound = false;
 
-                        foreach (PageLikeFreq pageLikeFreq in io_LikedPages)
+                        foreach (PageLikeFreq pageLikeFreq in o_LikedPages)
                         {
                             if (pageLikeFreq.Equals(pageToAdd))
                             {
@@ -94,12 +94,11 @@ namespace C15_Ex01_FacebookApp
 
                         if (!pageFound)
                         {
-                            io_LikedPages.Add(pageToAdd);
+                            o_LikedPages.Add(pageToAdd);
                         }
                     }
                 }
             }
         }
-
     }
 }
