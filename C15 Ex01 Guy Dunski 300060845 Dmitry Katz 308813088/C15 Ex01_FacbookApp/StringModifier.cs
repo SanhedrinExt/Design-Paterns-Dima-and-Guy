@@ -44,6 +44,4 @@ namespace C15_Ex01_FacebookApp
             }
         }
     }
-
-   
 }

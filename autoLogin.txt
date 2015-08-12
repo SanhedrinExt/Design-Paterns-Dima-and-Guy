@@ -1,0 +1,19 @@
+protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            LoginResult result = FacebookService.Connect("CAAByZBRy53lEBAGGlCt8uIfJrqamZAEVSqzyxGfsnZAZBwltDYsufZATqK8WeGJqYcLiG8v8yUAmc7JSCJRJ296VCPGj3ZCSBrAGmSZBpGM3SxBZCZAFYywVw4uwwX2Lajecsp2SwRNBD9LXZAvYuZBEvwWYEmB0sjhxhhwoDmPQztZAkbHPDxDNt9rMGyfeE1qlyBT12qtczFB3rm4QdAmAHIR2");
+            
+            // These are NOT the complete list of permissions. Other permissions for example:
+            // "user_birthday", "user_education_history", "user_hometown", "user_likes","user_location","user_relationships","user_relationship_details","user_religion_politics", "user_videos", "user_website", "user_work_history", "email","read_insights","rsvp_event","manage_pages"
+            // The documentation regarding facebook login and permissions can be found here: 
+            // v2.4: https://developers.facebook.com/docs/facebook-login/permissions/v2.4
+
+            if (!string.IsNullOrEmpty(result.AccessToken))
+            {
+                loginSequence(result);
+            }
+            else
+            {
+                MessageBox.Show(result.ErrorMessage);
+            }
+        }

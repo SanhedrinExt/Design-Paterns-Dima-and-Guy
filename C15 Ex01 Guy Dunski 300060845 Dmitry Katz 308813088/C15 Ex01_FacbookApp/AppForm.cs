@@ -6,52 +6,39 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
-using System.Diagnostics;
 
 namespace C15_Ex01_FacebookApp
 {
     public partial class AppForm : Form
     {
+        private const string k_AppID = "126414254366289"; // (dima & guy "DP.3­0­0­0­6­0­8­4­5­.­3­0­8­8­1­3088" app)
+        private const string k_OtherCategory = "Other";
+
+        private User m_LoggedInUser;
+
+        private FriendsManager m_FriendsManager;
+
         public AppForm()
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 1000;
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            LoginResult result = FacebookService.Connect("CAAByZBRy53lEBAGGlCt8uIfJrqamZAEVSqzyxGfsnZAZBwltDYsufZATqK8WeGJqYcLiG8v8yUAmc7JSCJRJ296VCPGj3ZCSBrAGmSZBpGM3SxBZCZAFYywVw4uwwX2Lajecsp2SwRNBD9LXZAvYuZBEvwWYEmB0sjhxhhwoDmPQztZAkbHPDxDNt9rMGyfeE1qlyBT12qtczFB3rm4QdAmAHIR2");
-            // These are NOT the complete list of permissions. Other permissions for example:
-            // "user_birthday", "user_education_history", "user_hometown", "user_likes","user_location","user_relationships","user_relationship_details","user_religion_politics", "user_videos", "user_website", "user_work_history", "email","read_insights","rsvp_event","manage_pages"
-            // The documentation regarding facebook login and permissions can be found here: 
-            // v2.4: https://developers.facebook.com/docs/facebook-login/permissions/v2.4
-
-            if (!string.IsNullOrEmpty(result.AccessToken))
-            {
-                loginSequence(result);
-            }
-            else
-            {
-                MessageBox.Show(result.ErrorMessage);
-            }
-        }
-
-        User m_LoggedInUser;
-        FriendsManager m_FriendsManager;
-
         private void loginAndInit()
         {
-            LoginResult result = FacebookService.Login("126414254366289", /// (dima & guy "DP.3­0­0­0­6­0­8­4­5­.­3­0­8­8­1­3088" app)
-                "user_about_me", "user_friends", "publish_actions", "user_events", "user_posts", "user_photos",
-                "user_status", "user_likes");
-            // These are NOT the complete list of permissions. Other permissions for example:
-            // "user_birthday", "user_education_history", "user_hometown", "user_likes","user_location","user_relationships","user_relationship_details","user_religion_politics", "user_videos", "user_website", "user_work_history", "email","read_insights","rsvp_event","manage_pages"
-            // The documentation regarding facebook login and permissions can be found here: 
-            // v2.4: https://developers.facebook.com/docs/facebook-login/permissions/v2.4
-            
+            LoginResult result = FacebookService.Login(
+                k_AppID,
+                "user_about_me",
+                "user_friends",
+                "publish_actions",
+                "user_posts",
+                "user_photos",
+                "user_status",
+                "user_likes");
+
             if (!string.IsNullOrEmpty(result.AccessToken))
             {
                 loginSequence(result);
@@ -60,7 +47,6 @@ namespace C15_Ex01_FacebookApp
             {
                 MessageBox.Show(result.ErrorMessage);
             }
-
         }
 
         private void loginSequence(LoginResult i_result)
@@ -71,6 +57,7 @@ namespace C15_Ex01_FacebookApp
             buttonLogin.Enabled = false;
             buttonLogout.Enabled = true;
             buttonCalculateFriendsStatstics.Enabled = true;
+            buttonPost.Enabled = true;
             comboBoxCategory.Enabled = true;
         }
 
@@ -79,8 +66,8 @@ namespace C15_Ex01_FacebookApp
             m_LoggedInUser = null;
             pictureBoxProfile.Image = null;
             pictureBoxFriend.Image = null;
-            textBoxStatus.Text = String.Empty;
-            textBoxOtherCategory.Text = string.Empty;            
+            textBoxStatus.Text = string.Empty;
+            textBoxOtherCategory.Text = string.Empty;
             listBoxFriends.Items.Clear();
             listBoxPosts.Items.Clear();
             listBoxFriendsPages.Items.Clear();
@@ -91,10 +78,11 @@ namespace C15_Ex01_FacebookApp
             buttonLogout.Enabled = false;
             buttonFetchPages.Enabled = false;
             buttonCalculateFriendsStatstics.Enabled = false;
+            buttonPost.Enabled = false;
             comboBoxCategory.Enabled = false;
-            labelMalePercentage.Text = "";
-            labelFemalePercentage.Text = "";
-            labelUnknownGenderPercentage.Text = "";
+            labelMalePercentage.Text = string.Empty;
+            labelFemalePercentage.Text = string.Empty;
+            labelUnknownGenderPercentage.Text = string.Empty;
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -110,15 +98,34 @@ namespace C15_Ex01_FacebookApp
         private void fetchUserInfo()
         {
             pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
-            if (m_LoggedInUser.WallPosts.Count > 0)
+            fetchNewsFeed();
+        }
+
+        private void fetchNewsFeed()
+        {
+            foreach (Post post in m_LoggedInUser.NewsFeed)
             {
-                foreach (Post post in m_LoggedInUser.WallPosts)
+                if (post.Message != null && post.From != null)
                 {
-                    if (post.Message != null)
-                    {
-                        listBoxPosts.Items.Add(post.Message);
-                    }
+                    listBoxPosts.Items.Add(post.Message);
+                    listBoxPosts.Items.Add(post.From.Name);
+                    listBoxPosts.Items.Add(post.CreatedTime.Value.Date);
+                    listBoxPosts.Items.Add(string.Empty);
                 }
+            }
+        }
+
+        private void buttonPost_Click(object sender, EventArgs e)
+        {
+            postStatus();   
+        }
+
+        private void postStatus()
+        {
+            if (textBoxStatus.Text != string.Empty)
+            {
+                Status postedStatus = m_LoggedInUser.PostStatus(textBoxStatus.Text);
+                MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
             }
         }
 
@@ -169,8 +176,7 @@ namespace C15_Ex01_FacebookApp
         {
             string selectedCategory = comboBoxCategory.Items[comboBoxCategory.SelectedIndex].ToString();
 
-            textBoxOtherCategory.Enabled = selectedCategory == "Other" ? true : false;
-
+            textBoxOtherCategory.Enabled = selectedCategory == k_OtherCategory ? true : false;
             buttonFetchPages.Enabled = true;
         }
 
@@ -184,8 +190,8 @@ namespace C15_Ex01_FacebookApp
         {
             List<PageLikeFreq> likedPages = new List<PageLikeFreq>();
             string selectedCategory = comboBoxCategory.Items[comboBoxCategory.SelectedIndex].ToString();
-            
-            if (selectedCategory == "Other") 
+
+            if (selectedCategory == k_OtherCategory)
             {
                 selectedCategory = textBoxOtherCategory.Text;
             }
@@ -199,6 +205,7 @@ namespace C15_Ex01_FacebookApp
         private void listBoxFriendsPages_SelectedIndexChanged(object sender, EventArgs e)
         {
             PageLikeFreq selectedPage = listBoxFriendsPages.Items[listBoxFriendsPages.SelectedIndex] as PageLikeFreq;
+            
             Process.Start(selectedPage.Page.URL);
         }
 
@@ -209,15 +216,15 @@ namespace C15_Ex01_FacebookApp
 
         private void calculateFriendsStatistics()
         {
+            const string oneDecimalDigitDormat = "0.0";
+
             m_FriendsManager.SortFriendsByGender();
-
-            labelMalePercentage.Text = "";
-            labelFemalePercentage.Text = "";
-            labelUnknownGenderPercentage.Text = "";
-            labelMalePercentage.Text = String.Format("{0}%", m_FriendsManager.MalePercentage().ToString("0.0"));
-            labelFemalePercentage.Text = String.Format("{0}%", m_FriendsManager.FemalePercentage().ToString("0.0"));
-            labelUnknownGenderPercentage.Text = String.Format("{0}%", m_FriendsManager.UnknownGenderPercentage().ToString("0.0"));
-
+            labelMalePercentage.Text = string.Empty;
+            labelFemalePercentage.Text = string.Empty;
+            labelUnknownGenderPercentage.Text = string.Empty;
+            labelMalePercentage.Text = string.Format("{0}%", m_FriendsManager.MalePercentage().ToString(oneDecimalDigitDormat));
+            labelFemalePercentage.Text = string.Format("{0}%", m_FriendsManager.FemalePercentage().ToString(oneDecimalDigitDormat));
+            labelUnknownGenderPercentage.Text = string.Format("{0}%", m_FriendsManager.UnknownGenderPercentage().ToString(oneDecimalDigitDormat));
             listBoxMaleFriends.Items.Clear();
             listBoxFemaleFriends.Items.Clear();
             listBoxUnkownGender.Items.Clear();

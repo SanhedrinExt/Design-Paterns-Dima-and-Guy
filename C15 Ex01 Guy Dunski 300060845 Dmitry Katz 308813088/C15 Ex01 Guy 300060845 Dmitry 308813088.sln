@@ -5,6 +5,12 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C15 Ex01_FacbookApp", "C15 Ex01_FacbookApp\C15 Ex01_FacbookApp.csproj", "{8B2512A8-C13D-40ED-B6D5-CE1408C636B6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD010289-4861-4108-B939-4B78FFA652B6}"
+	ProjectSection(SolutionItems) = preProject
+		diagrams and info.docx = diagrams and info.docx
+		Exercise Checking Report.txt = Exercise Checking Report.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

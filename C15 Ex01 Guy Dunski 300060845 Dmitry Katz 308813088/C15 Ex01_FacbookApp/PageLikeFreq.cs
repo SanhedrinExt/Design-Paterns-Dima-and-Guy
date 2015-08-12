@@ -14,7 +14,9 @@ namespace C15_Ex01_FacebookApp
             Page = i_Page;
             LikeCount = i_LikeCount;
         }
+
         public Page Page { get; set; }
+
         public int LikeCount { get; set; }
 
         public override string ToString()
@@ -32,6 +34,11 @@ namespace C15_Ex01_FacebookApp
             PageLikeFreq toCompare = obj as PageLikeFreq;
 
             return toCompare != null && toCompare.Page.Id == this.Page.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace C15_Ex01_FacebookApp
 {
-    partial class AppForm
+    public partial class AppForm
     {
         /// <summary>
         /// Required designer variable.
@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -361,6 +362,7 @@
             // 
             // buttonPost
             // 
+            this.buttonPost.Enabled = false;
             this.buttonPost.Location = new System.Drawing.Point(515, 154);
             this.buttonPost.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPost.Name = "buttonPost";
@@ -368,6 +370,7 @@
             this.buttonPost.TabIndex = 72;
             this.buttonPost.Text = "Post";
             this.buttonPost.UseVisualStyleBackColor = true;
+            this.buttonPost.Click += new System.EventHandler(this.buttonPost_Click);
             // 
             // label1
             // 
@@ -456,4 +459,3 @@
         private System.Windows.Forms.Label label1;
     }
 }
-

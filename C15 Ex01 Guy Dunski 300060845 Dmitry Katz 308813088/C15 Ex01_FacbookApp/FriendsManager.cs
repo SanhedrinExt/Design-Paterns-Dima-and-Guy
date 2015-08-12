@@ -9,10 +9,16 @@ namespace C15_Ex01_FacebookApp
 {
     public class FriendsManager
     {
+        private const string k_AllCategories = "All Categories";
+
         public List<User> AllFriends { get; private set; }
+
         public List<User> MaleFriends { get; private set; }
+
         public List<User> FemaleFriends { get; private set; }
+
         public List<User> UnknownGenderFriends { get; private set; }
+
         private bool m_SortedGenders = false;
 
         public FriendsManager(List<User> i_Friends)
@@ -31,6 +37,7 @@ namespace C15_Ex01_FacebookApp
                 {
                     sortFriendByGender(friend);
                 }
+
                 m_SortedGenders = true;
             }
         }
@@ -77,7 +84,7 @@ namespace C15_Ex01_FacebookApp
             {
                 foreach (Page page in friend.LikedPages)
                 {
-                    if (i_Category == "All Categories" || page.Category == i_Category)
+                    if (i_Category == k_AllCategories || page.Category == i_Category)
                     {
                         PageLikeFreq pageToAdd = new PageLikeFreq(page, 1);
                         bool pageFound = false;
